@@ -40,7 +40,7 @@ function App() {
   return (
     <div className="app-container">
       <Header score={score} bestScore={bestScore} />
-      <Game />
+      <Game championData={championData} />
     </div>
   );
 }
