@@ -4,19 +4,15 @@ const BOARD_SIZE = 6;
 
 function Game({ championData }) {
   const NUMBER_OF_CHAMPIONS = Object.keys(championData).length;
-  console.log('game component');
   function generateRandomNumbers(max, count) {
-    // if data hasnt loaded yet
-    if (max !== 0) {
-      const uniqueNumbers = new Set();
-      while (uniqueNumbers.size < count) {
-        const randomNumber = Math.floor(Math.random() * max);
-        console.log(randomNumber);
-        uniqueNumbers.add(randomNumber);
-      }
-
-      return uniqueNumbers;
+    const uniqueNumbers = new Set();
+    while (uniqueNumbers.size < count) {
+      const randomNumber = Math.floor(Math.random() * max);
+      console.log(randomNumber);
+      uniqueNumbers.add(randomNumber);
     }
+
+    return uniqueNumbers;
   }
 
   const championIndex = generateRandomNumbers(NUMBER_OF_CHAMPIONS, BOARD_SIZE);

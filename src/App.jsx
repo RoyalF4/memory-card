@@ -39,13 +39,10 @@ function App() {
     fetchChampionData();
   }, []);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
   return (
     <div className="app-container">
       <Header score={score} bestScore={bestScore} />
-      <Game championData={championData} />
+      {!isLoading && <Game championData={championData} />}
     </div>
   );
 }
