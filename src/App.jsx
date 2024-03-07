@@ -21,10 +21,12 @@ function App() {
         const data = await response.json();
         const champions = data.data;
         const championsObject = {};
+        let index = 0;
         for (const champion in champions) {
           const championName = champions[champion].name;
           const imageURL = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion}_0.jpg`;
-          championsObject[championName] = imageURL;
+          championsObject[index] = { name: championName, imageURL: imageURL };
+          index++;
         }
         setChampionData(championsObject);
       } catch (error) {
