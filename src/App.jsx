@@ -37,7 +37,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <Header />
+      <Header score={score} bestScore={bestScore} />
       <Game />
     </div>
   );
