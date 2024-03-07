@@ -10,6 +10,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [championData, setChampionData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchChampionData = async () => {
@@ -29,6 +30,7 @@ function App() {
           index++;
         }
         setChampionData(championsObject);
+        setIsLoading(false);
       } catch (error) {
         console.log('Error fetching champion data: ', error);
       }
@@ -37,6 +39,9 @@ function App() {
     fetchChampionData();
   }, []);
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="app-container">
       <Header score={score} bestScore={bestScore} />
