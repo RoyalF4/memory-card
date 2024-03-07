@@ -1,9 +1,11 @@
 import Card from './Card';
+import { useState } from 'react';
 
 const BOARD_SIZE = 6;
 
 function Game({ championData }) {
-  const NUMBER_OF_CHAMPIONS = Object.keys(championData).length;
+  const [champions, setChampions] = useState(getChampionSet());
+
   function generateRandomNumbers(max, count) {
     const uniqueNumbers = new Set();
     while (uniqueNumbers.size < count) {
@@ -11,17 +13,24 @@ function Game({ championData }) {
       console.log(randomNumber);
       uniqueNumbers.add(randomNumber);
     }
-
     return uniqueNumbers;
   }
 
-  const championIndex = generateRandomNumbers(NUMBER_OF_CHAMPIONS, BOARD_SIZE);
+  function getChampionSet() {
+    const indexSet = generateRandomNumbers(
+      Object.keys(championData).length,
+      BOARD_SIZE
+    );
+    return [...indexSet].map((index) => {
+      return championData[index];
+    });
+  }
 
   return (
     <main>
-      {[...championIndex].map((index) => {
-        const { name, imageURL } = championData[index];
-        return <Card key={index} name={name} imageURL={imageURL} />;
+      {[...champions].map((champion) => {
+        const { name, imageURL } = champion;
+        return <Card key={name} name={name} imageURL={imageURL} />;
       })}
     </main>
   );
