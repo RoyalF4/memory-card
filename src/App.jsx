@@ -40,10 +40,20 @@ function App() {
     fetchChampionData();
   }, []);
 
+  function handleScore(isClicked) {
+    if (isClicked) {
+      if (score > bestScore) setBestScore(score);
+      setScore(0);
+    } else {
+      setScore(score + 1);
+    }
+  }
   return (
     <div className="app-container">
       <Header score={score} bestScore={bestScore} />
-      {!isLoading && <Game championData={championData} />}
+      {!isLoading && (
+        <Game championData={championData} handleScore={handleScore} />
+      )}
     </div>
   );
 }

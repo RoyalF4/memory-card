@@ -4,9 +4,8 @@ import { useState } from 'react';
 
 const BOARD_SIZE = 10;
 
-function Game({ championData }) {
+function Game({ championData, handleScore }) {
   const [championGroup, setChampionGroup] = useState(getChampionGroup());
-  console.log('rending game');
 
   function getChampionGroup() {
     const indexSet = generateRandomNumbers(championData.length, BOARD_SIZE);
@@ -37,11 +36,12 @@ function Game({ championData }) {
     const { index } = event.target.dataset;
     const { isClicked } = championGroup[index];
     if (isClicked) {
-      console.log(isClicked);
+      setChampionGroup(getChampionGroup());
     } else {
       championGroup[index].isClicked = true;
       setChampionGroup([...shuffleArray(championGroup)]);
     }
+    handleScore(isClicked);
   }
 
   return (
