@@ -10,7 +10,7 @@ const URL =
 function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-  const [championData, setChampionData] = useState({});
+  const [championData, setChampionData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -22,21 +22,21 @@ function App() {
         }
         const data = await response.json();
         const champions = data.data;
-        const championsObject = {};
-        let index = 0;
+        const championsArray = [];
         for (const champion in champions) {
           const championName = champions[champion].name;
           const imageURL = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion}_0.jpg`;
-          championsObject[index] = { name: championName, imageURL: imageURL };
-          index++;
+          championsArray.push({
+            name: championName,
+            imageURL: imageURL,
+          });
         }
-        setChampionData(championsObject);
+        setChampionData(championsArray);
         setIsLoading(false);
       } catch (error) {
         console.log('Error fetching champion data: ', error);
       }
     };
-
     fetchChampionData();
   }, []);
 

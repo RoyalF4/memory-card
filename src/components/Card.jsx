@@ -1,10 +1,13 @@
 import '../css/Card.css';
-function Card({ name, imageURL }) {
+function Card({ name, imageURL, onClick, index }) {
   return (
-    <div className="card">
-      <img src={imageURL} alt="" />
+    <button
+      data-index={index}
+      onClick={onClick}
+      style={{ backgroundImage: `url(${imageURL})` }}
+    >
       {name}
-    </div>
+    </button>
   );
 }
 

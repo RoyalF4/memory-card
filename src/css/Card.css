@@ -1,8 +1,10 @@
-.card {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  width: 100px;
-  background: black;
+button {
+  width: 90px;
+  height: 160px;
+  background-size: contain;
+  border: none;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: end;
 }

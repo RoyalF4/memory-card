@@ -5,33 +5,44 @@ import { useState } from 'react';
 const BOARD_SIZE = 6;
 
 function Game({ championData }) {
-  const [champions, setChampions] = useState(getChampionSet());
+  const [championGroup, setChampionGroup] = useState(getChampionGroup());
+
+  function getChampionGroup() {
+    const indexSet = generateRandomNumbers(championData.length, BOARD_SIZE);
+    return [...indexSet].map((index) => {
+      const champion = championData[index];
+      return { ...champion, isClicked: false };
+    });
+  }
 
   function generateRandomNumbers(max, count) {
     const uniqueNumbers = new Set();
     while (uniqueNumbers.size < count) {
       const randomNumber = Math.floor(Math.random() * max);
-      console.log(randomNumber);
       uniqueNumbers.add(randomNumber);
     }
     return uniqueNumbers;
   }
 
-  function getChampionSet() {
-    const indexSet = generateRandomNumbers(
-      Object.keys(championData).length,
-      BOARD_SIZE
-    );
-    return [...indexSet].map((index) => {
-      return championData[index];
-    });
+  function handleClick(event) {
+    const { index } = event.target.dataset;
+    const { isClicked } = championGroup[index];
+    console.log(isClicked);
   }
 
   return (
     <main>
-      {[...champions].map((champion) => {
+      {[...championGroup].map((champion, index) => {
         const { name, imageURL } = champion;
-        return <Card key={name} name={name} imageURL={imageURL} />;
+        return (
+          <Card
+            key={name}
+            name={name}
+            index={index}
+            imageURL={imageURL}
+            onClick={handleClick}
+          />
+        );
       })}
     </main>
   );
