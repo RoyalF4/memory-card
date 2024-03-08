@@ -1,4 +1,4 @@
-button {
+main > button {
   width: 90px;
   height: 160px;
   padding: 5px;
@@ -13,11 +13,11 @@ button {
   font-family: 'Beaufort';
 }
 
-button:hover {
+main > button:hover {
   transform: scale(1.1);
   box-shadow: 0 3px 6px 2px #e8b5468d;
 }
 
-button:active {
+main > button:active {
   transform: scale(0.5);
 }

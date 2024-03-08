@@ -1,14 +1,14 @@
 import '../css/main.css';
 import Card from './Card';
+import Modal, { toggleModal } from './Modal';
 import { useState } from 'react';
 
-const BOARD_SIZE = 10;
-
-function Game({ championData, handleScore }) {
+function Game({ championData, handleScore, score, board_size }) {
   const [championGroup, setChampionGroup] = useState(getChampionGroup());
+  const [modalInfo, setModalInfo] = useState({});
 
   function getChampionGroup() {
-    const indexSet = generateRandomNumbers(championData.length, BOARD_SIZE);
+    const indexSet = generateRandomNumbers(championData.length, board_size);
     return [...indexSet].map((index) => {
       const champion = championData[index];
       return { ...champion, isClicked: false };
@@ -36,7 +36,19 @@ function Game({ championData, handleScore }) {
     const { index } = event.target.dataset;
     const { isClicked } = championGroup[index];
     if (isClicked) {
-      setChampionGroup(getChampionGroup());
+      setModalInfo({
+        imgURL: './src/assets/LoL-Defeat.png',
+        alt: 'Defeat',
+      });
+      toggleModal('modal');
+      //setChampionGroup(getChampionGroup());
+    } else if (score === board_size - 1) {
+      setModalInfo({
+        imgURL: './src/assets/LoL-Victory.png',
+        alt: 'Victory',
+      });
+      toggleModal('modal', 'Victory');
+      //setChampionGroup(getChampionGroup());
     } else {
       championGroup[index].isClicked = true;
       setChampionGroup([...shuffleArray(championGroup)]);
@@ -44,8 +56,14 @@ function Game({ championData, handleScore }) {
     handleScore(isClicked);
   }
 
+  function handleRestart() {
+    setChampionGroup(getChampionGroup());
+    toggleModal('modal');
+  }
+
   return (
     <main>
+      <Modal label={'modal'} info={modalInfo} onRestart={handleRestart} />
       {[...championGroup].map((champion, index) => {
         const { name, imageURL } = champion;
         return (

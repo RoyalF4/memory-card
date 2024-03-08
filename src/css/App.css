@@ -6,6 +6,11 @@
 
 html {
   /* background: #005c9e; */
-  background: #010a13;
+  background: var(--LoL-background);
   font-family: 'Beaufort';
+}
+
+:root {
+  --LoL-gold: #e8b5468d;
+  --LoL-background: #010a13;
 }

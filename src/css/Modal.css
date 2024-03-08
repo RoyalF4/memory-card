@@ -1,0 +1,36 @@
+#modal[open] {
+  background: #010a13;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  box-shadow: 0 1px 5px var(--LoL-gold);
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.564);
+}
+
+#modal img {
+  width: 150px;
+}
+
+#modal button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 100px;
+  background: linear-gradient(180deg, #9a3c14, #3d1808);
+  border: none;
+  color: var(--LoL-background);
+}
+
+#modal button:hover,
+#modal button:focus {
+  background: linear-gradient(180deg, #ce501a, #7a3010);
+}
+
+#modal button:active {
+  transform: scale(0.9);
+}

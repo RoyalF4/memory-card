@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 
 const URL =
   'https://ddragon.leagueoflegends.com/cdn/14.5.1/data/en_US/champion.json';
+const board_size = 10;
 
 function App() {
   const [score, setScore] = useState(0);
@@ -44,6 +45,9 @@ function App() {
     if (isClicked) {
       if (score > bestScore) setBestScore(score);
       setScore(0);
+    } else if (score === board_size - 1) {
+      setBestScore(score + 1);
+      setScore(0);
     } else {
       setScore(score + 1);
     }
@@ -52,7 +56,12 @@ function App() {
     <div className="app-container">
       <Header score={score} bestScore={bestScore} />
       {!isLoading && (
-        <Game championData={championData} handleScore={handleScore} />
+        <Game
+          championData={championData}
+          score={score}
+          handleScore={handleScore}
+          board_size={board_size}
+        />
       )}
     </div>
   );
