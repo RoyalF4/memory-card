@@ -1,3 +1,4 @@
+import '../css/main.css';
 import Card from './Card';
 import { useState } from 'react';
 

@@ -1,3 +1,4 @@
+import './css/App.css';
 import Header from './components/Header';
 import Game from './components/Game';
 import { useState } from 'react';

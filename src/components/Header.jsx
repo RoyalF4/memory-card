@@ -1,3 +1,4 @@
+import '../css/Header.css';
 function Header({ score, bestScore }) {
   return (
     <header>
