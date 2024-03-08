@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Beaufort';
+  src: url('../assets/BeaufortForLoL-TTF/BeaufortforLOL-Regular.ttf')
+    format('truetype');
+}
+
 html {
-  background: #005c9e;
+  /* background: #005c9e; */
+  background: #010a13;
+  font-family: 'Beaufort';
 }

@@ -2,10 +2,11 @@ import '../css/main.css';
 import Card from './Card';
 import { useState } from 'react';
 
-const BOARD_SIZE = 6;
+const BOARD_SIZE = 10;
 
 function Game({ championData }) {
   const [championGroup, setChampionGroup] = useState(getChampionGroup());
+  console.log('rending game');
 
   function getChampionGroup() {
     const indexSet = generateRandomNumbers(championData.length, BOARD_SIZE);
@@ -24,10 +25,23 @@ function Game({ championData }) {
     return uniqueNumbers;
   }
 
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
   function handleClick(event) {
     const { index } = event.target.dataset;
     const { isClicked } = championGroup[index];
-    console.log(isClicked);
+    if (isClicked) {
+      console.log(isClicked);
+    } else {
+      championGroup[index].isClicked = true;
+      setChampionGroup([...shuffleArray(championGroup)]);
+    }
   }
 
   return (
