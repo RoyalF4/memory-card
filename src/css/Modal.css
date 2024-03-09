@@ -12,18 +12,20 @@ dialog::backdrop {
 }
 
 #modal img {
-  width: 150px;
+  width: 300px;
 }
 
 #modal button {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 20px;
-  width: 100px;
+  height: 40px;
+  width: 150px;
   background: linear-gradient(180deg, #9a3c14, #3d1808);
   border: none;
-  color: var(--LoL-background);
+  color: var(--LoL-gold);
+  font-size: 1.5rem;
+  font-family: 'Beaufort';
 }
 
 #modal button:hover,
