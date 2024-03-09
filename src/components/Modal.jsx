@@ -1,7 +1,9 @@
 import '../css/Modal.css';
+import victory from '../assets/LoL-Victory.mp3';
+import defeat from '../assets/LoL-Defeat.mp3';
 
-const defeatAudio = new Audio('src/assets/LoL-Defeat.mp3');
-const victoryAudio = new Audio('src/assets/LoL-Victory.mp3');
+const defeatAudio = new Audio(defeat);
+const victoryAudio = new Audio(victory);
 victoryAudio.volume = 0.2;
 defeatAudio.volume = 0.2;
 
