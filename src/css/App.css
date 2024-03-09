@@ -2,6 +2,8 @@
   font-family: 'Beaufort';
   src: url('../assets/BeaufortForLoL-TTF/BeaufortforLOL-Regular.ttf')
     format('truetype');
+  src: url('../assets/BeaufortForLoL-TTF/BeaufortforLOL-Bold.ttf')
+    format('truetype');
 }
 
 html {
