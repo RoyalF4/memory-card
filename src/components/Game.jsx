@@ -2,6 +2,8 @@ import '../css/main.css';
 import Card from './Card';
 import Modal, { toggleModal } from './Modal';
 import { useState } from 'react';
+import victoryURL from '../assets/LoL-Victory.png';
+import defeatURL from '../assets/LoL-Defeat.png';
 
 function Game({ championData, handleScore, score, board_size }) {
   const [championGroup, setChampionGroup] = useState(getChampionGroup());
@@ -37,14 +39,14 @@ function Game({ championData, handleScore, score, board_size }) {
     const { isClicked } = championGroup[index];
     if (isClicked) {
       setModalInfo({
-        imgURL: './src/assets/LoL-Defeat.png',
+        imgURL: defeatURL,
         alt: 'Defeat',
       });
       toggleModal('modal');
       //setChampionGroup(getChampionGroup());
     } else if (score === board_size - 1) {
       setModalInfo({
-        imgURL: './src/assets/LoL-Victory.png',
+        imgURL: victoryURL,
         alt: 'Victory',
       });
       toggleModal('modal', 'Victory');
