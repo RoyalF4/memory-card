@@ -1,5 +1,4 @@
 import '../css/Card.css';
-import { AnimationEvent } from 'react';
 function Card({ name, imageURL, onClick, index }) {
   return (
     <div className="card-container">
