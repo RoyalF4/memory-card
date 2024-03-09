@@ -43,14 +43,12 @@ function Game({ championData, handleScore, score, board_size }) {
         alt: 'Defeat',
       });
       toggleModal('modal');
-      //setChampionGroup(getChampionGroup());
     } else if (score === board_size - 1) {
       setModalInfo({
         imgURL: victoryURL,
         alt: 'Victory',
       });
       toggleModal('modal', 'Victory');
-      //setChampionGroup(getChampionGroup());
     } else {
       championGroup[index].isClicked = true;
       setChampionGroup([...shuffleArray(championGroup)]);

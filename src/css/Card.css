@@ -1,4 +1,4 @@
-main > button {
+.card-container > button {
   width: 180px;
   height: 320px;
   padding: 5px;
@@ -11,13 +11,14 @@ main > button {
   transition: 0.3s ease;
   box-shadow: 0 1px 5px #e8b5468d;
   font-family: 'Beaufort';
+  font-size: 2rem;
 }
 
-main > button:hover {
+.card-container > button:hover {
   transform: scale(1.1);
   box-shadow: 0 3px 6px 2px #e8b5468d;
 }
 
-main > button:active {
+.card-container > button:active {
   transform: scale(0.5);
 }
